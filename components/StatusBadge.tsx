@@ -3,7 +3,7 @@ type Status = "Activo" | "En riesgo" | "Finalizado";
 const styles: Record<Status, string> = {
     Activo: "bg-emerald-50 text-emerald-700",
     "En riesgo": "bg-amber-50 text-amber-700",
-    Finalizado: "bg-violet-50 text-violet-700",
+    Finalizado: "bg-blue-50 text-blue-700",
 };
 
 type StatusBadgeProps = {
