@@ -22,11 +22,21 @@ const projects = [
     },
 ];
 
+const totalProjects = projects.length;
+
+const activeProjects = projects.filter(
+    (project) => project.status === "Activo"
+).length;
+
+const riskProjects = projects.filter(
+    (project) => project.status === "En riesgo"
+).length;
+
 export default function DashboardPage() {
     return (
         <section className="space-y-8">
             <div>
-                <h1 className="text-3xl font-bold text-zinc-900">
+                <h1 className="text-4xl font-extrabold tracking-tight text-zinc-950">
                     Dashboard
                 </h1>
                 <p className="mt-2 text-zinc-500">
@@ -35,23 +45,23 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-x1 border border-zinc-200 bg-white p-6">
-                    <p className="text-sm text-zinc-500">Total de proyectos</p>
-                    <p className="mt-2 text-3xl font-bold">3</p>
+                <div className="rounded-2xl border border-violet-200 bg-violet-50 p-6 shadow-sm">
+                    <p className="text-sm font-medium text-zinc-600">Total de proyectos</p>
+                    <p className="mt-2 text-4xl font-extrabold tracking-tight text-zinc-900">3</p>
                 </div>
 
-                <div className="rounded-x1 border border-zinc-200 bg-white p-6">
-                    <p className="text-sm text-zinc-500">Proyectos activos</p>
-                    <p className="mt-2 text-3xl font-bold text-emerald-600">1</p>
+                <div className="rounded-2xl border border-violet-200 bg-violet-50 p-6 shadow-sm">
+                    <p className="text-sm font-medium text-zinc-600">Proyectos activos</p>
+                    <p className="mt-2 text-4xl font-extrabold tracking-tight text-emerald-600">1</p>
                 </div>
 
-                <div className="rounded-x1 border border-zinc-200 bg-white p-6">
-                    <p className="text-sm text-zinc-500">Proyectos en riesgo</p>
-                    <p className="mt-2 text-3xl font-bold text-amber-600">1</p>
+                <div className="rounded-2xl border border-violet-200 bg-violet-50 p-6 shadow-sm">
+                    <p className="text-sm font-medium text-zinc-600">Proyectos en riesgo</p>
+                    <p className="mt-2 text-4xl font-extrabold tracking-tight text-amber-600">1</p>
                 </div>
             </div> 
 
-            <div className="rounded-x1 border border-zinc-200 bg-white p-6">
+            <div className="rounded-2xl border border-violet-100 bg-white p-6 shadow-sm">
                 <h2 className="mb-6 text-xl font-semibold text-zinc-900">
                     Seguimiento de proyectos
                 </h2>
