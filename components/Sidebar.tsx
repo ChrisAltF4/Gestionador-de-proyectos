@@ -6,7 +6,7 @@ import { LayoutDashboard, FolderKanban, Layers3 } from "lucide-react";
 
 const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Proyectos", href: "/projects", icon: FolderKanban },
+    { name: "Proyectos", href: "/proyectos", icon: FolderKanban },
 ];
 
 export default function Sidebar() {
