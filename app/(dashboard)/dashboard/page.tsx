@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { CircleAlert, TriangleAlert } from "lucide-react";
-import KpiCard from "@/components/Kpicard";
+import KpiCard from "@/components/kpiCard";
 import { useStore } from "@/lib/store";
 import { formatCOP, resumenRubros, totalesProyecto } from "@/lib/utils";
 

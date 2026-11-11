@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ExpenseForm from "@/components/ExpenseForm";
+import ExpenseForm from "@/components/expenseForm";
 
 type Rubro = { nombre: string; presupuestado: number; ejecutado: number };
 
