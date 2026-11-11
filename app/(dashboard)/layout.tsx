@@ -1,3 +1,10 @@
+   export default function ProyectosLayout({
+     children,
+   }: {
+     children: React.ReactNode;
+   }) {
+     return <>{children}</>;
+   }
 import type{ ReactNode } from 'react';
 import Sidebar from '@/components/Sidebar';
 
