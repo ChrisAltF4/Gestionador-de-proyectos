@@ -1,6 +1,5 @@
 # GestorPro
 
-[![Leer en español](https://img.shields.io/badge/Leer%20en-Español-blue)](README.md)
 
 A **project tracking** web application for companies and corporations. It shows the budget, the amount spent and the remaining balance of each project, item by item, and lets you record expenses that update the totals instantly.
 
