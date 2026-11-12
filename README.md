@@ -1,145 +1,145 @@
 # GestorPro
 
-Aplicación web de **seguimiento de proyectos** para empresas y corporaciones. Permite ver el presupuesto, lo ejecutado y el saldo de cada proyecto, rubro por rubro, y registrar gastos que actualizan los totales al instante.
+A **project tracking** web application for companies and corporations. It shows the budget, the amount spent and the remaining balance of each project, item by item, and lets you record expenses that update the totals instantly.
 
-**Demo en vivo:** [https://gestorpro.page](https://gestorpro.page)
+**Live demo:** [https://gestorpro.page](https://gestorpro.page)
 
 ---
 
-## Capturas de pantalla
+## Screenshots
 
 ### Dashboard
 
-Resumen general con tarjetas de presupuesto total, ejecutado, saldo y proyectos activos o en riesgo, un gráfico de presupuesto vs. ejecutado por proyecto y un panel de alertas.
+Overview with cards for total budget, amount spent, balance and active or at-risk projects, a budget vs. spent chart per project, and an alerts panel.
 
 ![Dashboard](public/Screenshots/dashboard.png)
 
-### Lista de proyectos
+### Projects list
 
-Tabla con buscador, filtro por estado, avance de ejecución y acciones para ver, editar y eliminar proyectos.
+Table with search, a status filter, execution progress, and actions to view, edit and delete projects.
 
-![Lista de proyectos](public/Screenshots/proyectos.png)
+![Projects list](public/Screenshots/proyectos.png)
 
 ---
 
-## Funcionalidades
+## Features
 
-- **Dashboard** con indicadores clave (KPI), gráfico de barras y alertas de rubros con más del 85 % ejecutado o sobreejecutados.
-- **Gestión de proyectos** (crear, ver, editar y eliminar) con buscador y filtro por estado.
-- **Detalle de proyecto** con tabla rubro por rubro: presupuestado, ejecutado, saldo y porcentaje de ejecución, con fila de totales.
-- **Registro de gastos** por rubro: el ejecutado, el saldo y las alertas se recalculan al instante.
-- **Datos simulados** con Faker, en pesos colombianos (COP).
+- **Dashboard** with key performance indicators (KPIs), a bar chart, and alerts for budget items that are over 85% spent or overspent.
+- **Project management** (create, view, edit and delete) with search and a status filter.
+- **Project detail** with an item-by-item table: budgeted, spent, balance and execution percentage, plus a totals row.
+- **Expense logging** per budget item: spent amount, balance and alerts are recalculated instantly.
+- **Simulated data** generated with Faker, in Colombian pesos (COP).
 
-Los rubros que maneja cada proyecto son: Personal, Equipos, Software/Licencias, Servicios externos, Viáticos, Capacitación e Imprevistos.
+The budget items tracked in every project are: Personal (staff), Equipos (equipment), Software/Licencias (software and licenses), Servicios externos (external services), Viáticos (travel expenses), Capacitación (training) and Imprevistos (contingencies).
 
-## Tecnologías
+## Tech stack
 
-| Herramienta | Uso |
+| Tool | Purpose |
 |---|---|
-| [Next.js 16](https://nextjs.org/) (App Router) | Framework y enrutamiento |
-| [React](https://react.dev/) + TypeScript | Interfaz y tipado |
-| [Tailwind CSS](https://tailwindcss.com/) | Estilos |
-| [Recharts](https://recharts.org/) | Gráficos |
-| [Zustand](https://zustand-demo.pmnd.rs/) | Estado compartido entre páginas |
-| [@faker-js/faker](https://fakerjs.dev/) | Datos simulados |
-| [lucide-react](https://lucide.dev/) | Íconos |
-| [Vercel](https://vercel.com/) | Despliegue |
+| [Next.js 16](https://nextjs.org/) (App Router) | Framework and routing |
+| [React](https://react.dev/) + TypeScript | UI and typing |
+| [Tailwind CSS](https://tailwindcss.com/) | Styling |
+| [Recharts](https://recharts.org/) | Charts |
+| [Zustand](https://zustand-demo.pmnd.rs/) | State shared between pages |
+| [@faker-js/faker](https://fakerjs.dev/) | Simulated data |
+| [lucide-react](https://lucide.dev/) | Icons |
+| [Vercel](https://vercel.com/) | Deployment |
 
-## Rutas
+## Routes
 
-| Ruta | Descripción |
+| Route | Description |
 |---|---|
-| `/` | Redirige a `/dashboard` |
-| `/dashboard` | Resumen general, gráfico y alertas |
-| `/proyectos` | Lista de proyectos con CRUD |
-| `/proyectos/[id]` | Detalle del proyecto, rubros y registro de gastos |
+| `/` | Redirects to `/dashboard` |
+| `/dashboard` | Overview, chart and alerts |
+| `/proyectos` | Projects list with CRUD |
+| `/proyectos/[id]` | Project detail, budget items and expense logging |
 
-## Cómo ejecutarlo en local
+## Running locally
 
-Requisitos: [Node.js](https://nodejs.org/) 20 o superior y Git.
+Requirements: [Node.js](https://nodejs.org/) 20 or higher and Git.
 
 ```bash
-# 1. Clonar el repositorio
+# 1. Clone the repository
 git clone https://github.com/ChrisAltF4/Gestionador-de-proyectos.git
 cd Gestionador-de-proyectos
 
-# 2. Instalar dependencias
+# 2. Install dependencies
 npm install
 
-# 3. Iniciar el servidor de desarrollo
+# 3. Start the development server
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000) en el navegador.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Para generar la versión de producción:
+To create a production build:
 
 ```bash
 npm run build
 npm start
 ```
 
-## Estructura del proyecto
+## Project structure
 
 ```
 .
 ├── app/
-│   ├── layout.tsx                   # Layout raíz
-│   ├── page.tsx                     # Redirige a /dashboard
+│   ├── layout.tsx                   # Root layout
+│   ├── page.tsx                     # Redirects to /dashboard
 │   └── (dashboard)/
-│       ├── layout.tsx               # Menú lateral + contenido
+│       ├── layout.tsx               # Sidebar + content
 │       ├── dashboard/page.tsx       # Dashboard
 │       └── proyectos/
-│           ├── page.tsx             # Lista de proyectos
-│           └── [id]/page.tsx        # Detalle del proyecto
+│           ├── page.tsx             # Projects list
+│           └── [id]/page.tsx        # Project detail
 ├── components/
-│   ├── sidebar.tsx                  # Menú lateral
-│   ├── kpiCard.tsx                  # Tarjeta de indicador
-│   ├── statusBadge.tsx              # Chip de estado
-│   ├── progressBar.tsx              # Barra de avance
-│   ├── projectform.tsx              # Formulario de proyecto
-│   └── expenseForm.tsx              # Formulario de gasto
+│   ├── sidebar.tsx                  # Side menu
+│   ├── kpiCard.tsx                  # KPI card
+│   ├── statusBadge.tsx              # Status chip
+│   ├── progressBar.tsx              # Progress bar
+│   ├── projectform.tsx              # Project form
+│   └── expenseForm.tsx              # Expense form
 ├── lib/
-│   ├── types.ts                     # Tipos (Proyecto, Gasto, rubros)
-│   ├── faker-data.ts                # Generación de datos con Faker
-│   ├── store.ts                     # Estado global (Zustand)
-│   └── utils.ts                     # Formato COP y cálculos
+│   ├── types.ts                     # Types (Project, Expense, budget items)
+│   ├── faker-data.ts                # Data generation with Faker
+│   ├── store.ts                     # Global state (Zustand)
+│   └── utils.ts                     # COP formatting and calculations
 └── public/
-    └── screenshots/                # Capturas del README
+    └── Screenshots/                 # README screenshots
 ```
 
-## Cómo funcionan los datos
+## How the data works
 
-- Los proyectos se generan con **Faker** usando una semilla fija (`faker.seed(123)`), así que todos ven los mismos datos al abrir la página.
-- El **ejecutado** y el **saldo** no se guardan: se calculan.
-  - Ejecutado de un rubro = suma de los gastos de ese rubro.
-  - Saldo = presupuesto del rubro − ejecutado.
-- Los valores se muestran en pesos colombianos con `Intl.NumberFormat("es-CO")`.
-- Los niveles de alerta son: **normal** (menos de 85 %), **alerta** (85 % o más) y **sobreejecución** (más de 100 %).
+- Projects are generated with **Faker** using a fixed seed (`faker.seed(123)`), so everyone sees the same data when opening the app.
+- The **spent amount** and the **balance** are not stored, they are calculated:
+  - Spent amount of an item = sum of the expenses of that item.
+  - Balance = item budget − spent amount.
+- Amounts are displayed in Colombian pesos using `Intl.NumberFormat("es-CO")`.
+- Alert levels are: **normal** (under 85%), **warning** (85% or more) and **overspent** (over 100%).
 
-> **Nota:** el proyecto no tiene backend ni base de datos. Los cambios (crear, editar, eliminar proyectos y registrar gastos) viven en el navegador y se pierden al recargar la página, que vuelve a los datos iniciales de Faker.
+> **Note:** the project has no backend or database. Changes (creating, editing and deleting projects, and logging expenses) live in the browser and are lost when the page is reloaded, which returns to the initial Faker data.
 
-## Flujo de trabajo del equipo
+## Team workflow
 
-- `main`: versión estable y desplegada.
-- `develop`: rama de integración donde se une el trabajo.
-- `feature/...`: una rama por funcionalidad, que se une a `develop` con Pull Request.
-- `fix/...`: correcciones.
+- `main`: stable, deployed version.
+- `develop`: integration branch where the work is merged.
+- `feature/...`: one branch per feature, merged into `develop` through a Pull Request.
+- `fix/...`: bug fixes.
 
-Los mensajes de commit siguen el formato `tipo: descripción` (`feat`, `fix`, `style`, `chore`, `docs`, `refactor`).
+Commit messages follow the `type: description` format (`feat`, `fix`, `style`, `chore`, `docs`, `refactor`).
 
-Cada push a `main` se despliega automáticamente en Vercel.
+Every push to `main` is automatically deployed on Vercel.
 
-## Equipo
+## Team
 
-| Integrante | Responsabilidad |
+| Member | Responsibility |
 |---|---|
-| _Nombre_ | Datos y lógica (`lib/`) |
-| _Nombre_ | Layout, menú lateral y componentes comunes |
-| _Nombre_ | Lista de proyectos |
-| _Nombre_ | Detalle de proyecto y registro de gastos |
-| _Nombre_ | Dashboard |
+| _Christian_ | Data and logic (`lib/`) |
+| _Fiorella_ | Layout, sidebar and shared components |
+| _Luis_ | Projects list |
+| _Alejandro_ | Project detail and expense logging |
+| _Christian_ | Dashboard |
 
 ---
 
-Proyecto académico desarrollado con Next.js.
+Academic project built with Next.js.
