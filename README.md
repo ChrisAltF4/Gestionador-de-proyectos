@@ -1,5 +1,7 @@
 # GestorPro
 
+[![Leer en español](https://img.shields.io/badge/Leer%20en-Español-blue)](README.md)
+
 A **project tracking** web application for companies and corporations. It shows the budget, the amount spent and the remaining balance of each project, item by item, and lets you record expenses that update the totals instantly.
 
 **Live demo:** [https://gestorpro.page](https://gestorpro.page)
@@ -22,15 +24,28 @@ Table with search, a status filter, execution progress, and actions to view, edi
 
 ---
 
-## Features
+## Current status
 
-- **Dashboard** with key performance indicators (KPIs), a bar chart, and alerts for budget items that are over 85% spent or overspent.
-- **Project management** (create, view, edit and delete) with search and a status filter.
-- **Project detail** with an item-by-item table: budgeted, spent, balance and execution percentage, plus a totals row.
-- **Expense logging** per budget item: spent amount, balance and alerts are recalculated instantly.
+| Part | Status |
+|---|---|
+| Dashboard (KPIs, bar chart and alerts) | Working, reads the shared data |
+| Projects list (search, filter, create, edit and delete) | Working, changes are reflected on the dashboard |
+| Project detail (`/proyectos/[id]`) | **Prototype**: uses fixed sample data, not yet connected to the shared data |
+| Expense logging | **Prototype**: only works inside the detail page and does not affect the dashboard or the list |
+
+### What it does today
+
+- **Dashboard** with cards for total budget, amount spent, balance and active or at-risk projects, a budget vs. spent chart per project, and an alerts panel with the budget items that are at 85% or more.
+- **Project management**: table with search by name or manager, a status filter, execution progress, and create, edit and delete through a modal form (including the budget of each item).
 - **Simulated data** generated with Faker, in Colombian pesos (COP).
 
-The budget items tracked in every project are: Personal (staff), Equipos (equipment), Software/Licencias (software and licenses), Servicios externos (external services), Viáticos (travel expenses), Capacitación (training) and Imprevistos (contingencies).
+The budget items of each project are: Personal (staff), Equipos (equipment), Software/Licencias (software and licenses), Servicios externos (external services), Viáticos (travel expenses), Capacitación (training) and Imprevistos (contingencies).
+
+### Pending
+
+- Connect the project detail to the shared data, so it shows the real budget items of the selected project (today it always shows the same sample project).
+- Make logging an expense update the spent amount, the balance, the alerts and the dashboard.
+- Per-item charts and monthly execution in the detail view.
 
 ## Tech stack
 
@@ -51,8 +66,8 @@ The budget items tracked in every project are: Personal (staff), Equipos (equipm
 |---|---|
 | `/` | Redirects to `/dashboard` |
 | `/dashboard` | Overview, chart and alerts |
-| `/proyectos` | Projects list with CRUD |
-| `/proyectos/[id]` | Project detail, budget items and expense logging |
+| `/proyectos` | Projects list with search, filter and CRUD |
+| `/proyectos/[id]` | Project detail (prototype with sample data) |
 
 ## Running locally
 
@@ -91,14 +106,14 @@ npm start
 │       ├── dashboard/page.tsx       # Dashboard
 │       └── proyectos/
 │           ├── page.tsx             # Projects list
-│           └── [id]/page.tsx        # Project detail
+│           └── [id]/page.tsx        # Project detail (prototype)
 ├── components/
 │   ├── sidebar.tsx                  # Side menu
 │   ├── kpiCard.tsx                  # KPI card
-│   ├── statusBadge.tsx              # Status chip
-│   ├── progressBar.tsx              # Progress bar
+│   ├── statusBadge.tsx              # Status chip (not used yet)
+│   ├── progressBar.tsx              # Progress bar (not used yet)
 │   ├── projectform.tsx              # Project form
-│   └── expenseForm.tsx              # Expense form
+│   └── expenseForm.tsx              # Expense form (used in the detail page)
 ├── lib/
 │   ├── types.ts                     # Types (Project, Expense, budget items)
 │   ├── faker-data.ts                # Data generation with Faker
@@ -117,7 +132,7 @@ npm start
 - Amounts are displayed in Colombian pesos using `Intl.NumberFormat("es-CO")`.
 - Alert levels are: **normal** (under 85%), **warning** (85% or more) and **overspent** (over 100%).
 
-> **Note:** the project has no backend or database. Changes (creating, editing and deleting projects, and logging expenses) live in the browser and are lost when the page is reloaded, which returns to the initial Faker data.
+> **Note:** the project has no backend or database. Changes (creating, editing and deleting projects) live in the browser and are lost when the page is reloaded, which returns to the initial Faker data.
 
 ## Team workflow
 
