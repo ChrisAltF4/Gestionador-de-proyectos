@@ -127,8 +127,8 @@ export default function ProyectosPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
+            <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white">
+              <table className="w-full text-sm">
                 <thead className="bg-gray-50 text-sm text-gray-500">
                   <tr>
                     <th className="px-6 py-4">Proyecto</th>
