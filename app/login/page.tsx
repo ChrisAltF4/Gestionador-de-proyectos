@@ -1,11 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import type { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { Layers3 } from "lucide-react";
 
 export default function LoginPage() {
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        router.push("/dashboard");
+    }
 
     return (
         <main className="flex min-h-screen items-center justify-center bg-zinc-50 p-4">
@@ -22,9 +30,12 @@ export default function LoginPage() {
                     </p>
                 </div>
 
-                <form className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1.5">
-                        <label htmlFor="email" className="text-sm font-medium text-zinc-700">
+                        <label
+                            htmlFor="email"
+                            className="text-sm font-medium text-zinc-700"
+                        >
                             Correo
                         </label>
                         <input
@@ -38,7 +49,10 @@ export default function LoginPage() {
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                        <label htmlFor="password" className="text-sm font-medium text-zinc-700">
+                        <label
+                            htmlFor="password"
+                            className="text-sm font-medium text-zinc-700"
+                        >
                             Contraseña
                         </label>
                         <input
