@@ -5,19 +5,13 @@ import Link from "next/link";
 import { Plus, Search, Eye, Pencil, Trash2, FolderKanban } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { formatCOP, totalesProyecto } from "@/lib/utils";
-import type { Estado, Nivel, Proyecto } from "@/lib/types";
+import type { Estado, Proyecto } from "@/lib/types";
 import ProjectForm, { type DatosProyecto } from "@/components/projectform";
 
 const estadoStyle: Record<Estado, string> = {
   Activo: "bg-blue-100 text-blue-700",
   "En riesgo": "bg-amber-100 text-amber-700",
   Finalizado: "bg-gray-200 text-gray-700",
-};
-
-const nivelStyle: Record<Nivel, string> = {
-  normal: "bg-green-100 text-green-700",
-  alerta: "bg-amber-100 text-amber-700",
-  sobre: "bg-red-100 text-red-700",
 };
 
 export default function ProyectosPage() {
@@ -71,7 +65,7 @@ export default function ProyectosPage() {
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Proyectos</h1>
             <p className="mt-2 text-gray-500">
-              Lista de proyectos y su ejecución presupuestal.
+              Lista de proyectos y su presupuesto.
             </p>
           </div>
           <button
@@ -127,16 +121,14 @@ export default function ProyectosPage() {
               </p>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
+            <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white">
+              <table className="w-full text-sm">
                 <thead className="bg-gray-50 text-sm text-gray-500">
                   <tr>
                     <th className="px-6 py-4">Proyecto</th>
                     <th className="px-6 py-4">Responsable</th>
                     <th className="px-6 py-4">Estado</th>
                     <th className="px-6 py-4">Presupuesto</th>
-                    <th className="px-6 py-4">Ejecutado</th>
-                    <th className="px-6 py-4">Avance</th>
                     <th className="px-6 py-4 text-center">Acciones</th>
                   </tr>
                 </thead>
@@ -161,16 +153,6 @@ export default function ProyectosPage() {
                         </td>
                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
                           {formatCOP(t.presupuesto)}
-                        </td>
-                        <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-600">
-                          {formatCOP(t.ejecutado)}
-                        </td>
-                        <td className="px-6 py-4">
-                          <span
-                            className={`rounded-full px-3 py-1 text-xs font-semibold ${nivelStyle[t.nivel]}`}
-                          >
-                            {t.porcentaje.toFixed(0)}%
-                          </span>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center justify-center gap-3">
