@@ -35,3 +35,4 @@ export default function ExpenseForm({ rubros, onSubmit }: Props) {
       </button>
     </div>
   );
+}

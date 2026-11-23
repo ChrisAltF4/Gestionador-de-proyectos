@@ -6,14 +6,14 @@ import { LayoutDashboard, FolderKanban, Layers3 } from "lucide-react";
 
 const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Proyectos", href: "/projects", icon: FolderKanban },
+    { name: "Proyectos", href: "/proyectos", icon: FolderKanban },
 ];
 
 export default function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <aside className="flex w-full flex-col border-b border-zinc-200 bg-white px-4 py-5 md:min-h-screen md:w-64 md:w-64 md:border-b-0 md:border-r md:px-5 md:py-8">
+        <aside className="flex w-full flex-col border-b border-zinc-200 bg-white px-4 py-5 md:min-h-screen md:w-64 md:border-b-0 md:border-r md:px-5 md:py-8">
             <div className="mb-7 flex items-center gap-3 px-2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-x1 bg-violet-100 text-violet-700">
                     <Layers3 size={20} strokeWidth={1.8} />
